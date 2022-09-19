@@ -8,6 +8,16 @@ const localKey = 'feedback-form-state';
 
 form.addEventListener('input', Throttle(storageFormData, 500));
 form.addEventListener('submit', onFormSubmit);
+window.addEventListener('load', checkStorage);
+
+function checkStorage(event) {
+  if (!localStorage.getItem(localKey)) return;
+  const formValue = JSON.parse(localStorage.getItem(localKey));
+
+  for (const key in formValue) {
+    form.elements[key].value = formValue[key];
+  }
+}
 
 function onFormSubmit(event) {
     event.preventDefault();
