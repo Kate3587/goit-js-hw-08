@@ -21,7 +21,7 @@ function newStart() {
 
 
 
-player.setCurrentTime(currentVideoTime).then(() => {
+player.setCurrentTime(currentVideoTime ?? 0).then(() => {
    
 })
 .catch (function(error) {
