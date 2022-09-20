@@ -8,10 +8,9 @@ const cardMarkup = createGalleryPicMarkup(galleryItems);
 
 galleryEl.insertAdjacentHTML('beforeend', cardMarkup);
 
-
 function createGalleryPicMarkup (items) {
     return items
-        .map(({ preview, original, description }) => {
+      .map(({ preview, original, description }) => {
         return `<div class="gallery__item">
   <a class="gallery__link" href="${original}">
     <img
@@ -24,26 +23,12 @@ function createGalleryPicMarkup (items) {
 </div>
         `;
         })
-        .join('');
-   
+      .join('');
+  
 };
 
-galleryEl.addEventListener('click', onGalleryItemClick);
+const dataSource = galleryItems[0].original
 
-function onGalleryItemClick(evt) {
-    evt.preventDefault();
-    if (!evt.target.classList.contains("gallery__image")) return;
-    const dataSource = evt.target.dataset.source;
-
-  new SimpleLightbox('.gallery a', { dataSource });
-
-
-    galleryEl.addEventListener('keydown', onTargetKeyClick);
-        function onTargetKeyClick(evt) {
-            if (evt.code === 'Escape') {
-            instance.close();
-        };
-    };
-}
+new SimpleLightbox('.gallery a', { dataSource});
 
 console.log(galleryItems);
