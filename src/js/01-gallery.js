@@ -27,7 +27,7 @@ function createGalleryPicMarkup (items) {
   
 };
 
-const dataSource = galleryItems[0].original
+const dataSource = galleryItems.original
 
 new SimpleLightbox('.gallery a', { dataSource});
 
